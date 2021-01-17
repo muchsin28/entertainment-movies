@@ -3,8 +3,9 @@ const MovieController = require("../controllers/MovieController");
 
 Router.get("/", MovieController.getList);
 Router.get("/:id", MovieController.getById);
-Router.post("/", MovieController.create);
+// Router.post("/", MovieController.create);
 Router.patch("/:id", MovieController.update);
 Router.delete("/:id", MovieController.delete);
+
 
 module.exports = Router;
