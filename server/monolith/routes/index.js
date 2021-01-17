@@ -3,7 +3,7 @@ const MovieRoutes = require("./MovieRoutes");
 const SeriesRoutes = require("./SeriesRoutes");
 
 Router.get("/", (req, res) => {
-	res.send("Haloo ini dari Index Routes");
+	res.send("TES - Home Monolith");
 });
 
 Router.use("/movies", MovieRoutes);

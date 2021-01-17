@@ -1,4 +1,4 @@
-const db = require("../config/mongo");
+const { db, ObjectId } = require("../config/mongo");
 const Movies = db.collection("movies");
 
 class Movie {
@@ -6,20 +6,23 @@ class Movie {
 		return Movies.find().toArray();
 	}
 
-	static findOne(params){
-		return Movies.findOne(params);
+	static findOne(id) {
+		const o_id = new ObjectId(id)
+		return Movies.findOne({ _id: o_id });
 	}
 
-	static insert(params){
-		return Movies.insert(params);
+	static insert(data) {
+		return Movies.insertOne(data);
 	}
 
-	static updatOne(params1, params2){
-		return Movies.updateOne(params1,params2);
+	static updateOne(id, data) {
+		const o_id = new ObjectId(id)
+		return Movies.updateOne({ _id: o_id }, { $set: data });
 	}
 
-	static deleteOne(params){
-		return Movies.deleteOne(params)
+	static deleteOne(id) {
+		const o_id = new ObjectId(id)
+		return Movies.deleteOne({ _id: o_id })
 	}
 }
 
