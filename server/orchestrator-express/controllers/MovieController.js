@@ -40,6 +40,7 @@ class MovieController {
 	static async update(req, res, next) {
 		const id = req.params.id
 		const popularity = Number(req.body.popularity)
+		console.log(popularity)
 		try {
 			const update = await axios.patch(Movies + id, {
 				popularity
@@ -48,7 +49,8 @@ class MovieController {
 					redis.del(`${id}`)
 					redis.del('movies')
 					redis.del('entertainme')
-					res.status(200).json({ message: "Popularity Updated" })
+					console.log(result.data)
+					res.status(200).json(result.data)
 				})
 		} catch (error) {
 			res.status(400).json(error)
