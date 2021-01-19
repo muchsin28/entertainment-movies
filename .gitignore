@@ -1,0 +1,6 @@
+client/node_modules
+server/monolith/node_modules
+server/orchestrator/node_modules
+server/orchestrator-express/node_modules
+server/services/movies/node_modules
+server/services/series/node_modules
