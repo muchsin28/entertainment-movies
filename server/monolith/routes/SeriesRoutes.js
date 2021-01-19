@@ -1,5 +1,5 @@
 const Router = require("express").Router();
-const SeriesController = require("../controllers/SeriesController");
+const { SeriesController } = require("../controllers");
 
 Router.get("/", SeriesController.getList);
 Router.get("/:id", SeriesController.getById);

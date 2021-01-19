@@ -1,5 +1,5 @@
 const Router = require("express").Router();
-const MovieController = require("../controllers/MovieController");
+const { MovieController } = require("../controllers");
 
 Router.get("/", MovieController.getList);
 Router.get("/:id", MovieController.getById);

@@ -1,4 +1,4 @@
-const Series = require("../models/series");
+const { Series } = require("../models");
 
 class SeriesController {
 	static getList(req, res, next) {
@@ -29,7 +29,7 @@ class SeriesController {
 			title: req.body.title,
 			overview: req.body.overview,
 			poster_path: req.body.poster_path,
-			popularity: req.body.popularity,
+			popularity: Number(req.body.popularity),
 			tags: req.body.tags
 		})
 			.then(data => {
@@ -42,7 +42,7 @@ class SeriesController {
 	static update(req, res, next) {
 		const id = req.params.id
 		Series.updateOne(id, {
-			popularity: req.body.popularity,
+			popularity: Number(req.body.popularity),
 
 		})
 			.then(data => {

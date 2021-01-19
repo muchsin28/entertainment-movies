@@ -1,4 +1,4 @@
-const Movie = require("../models/movie");
+const { Movie } = require("../models");
 
 class MovieController {
 	static getList(req, res, next) {
@@ -25,12 +25,11 @@ class MovieController {
 	}
 
 	static create(req, res, next) {
-		console.log(req.body.tags)
 		Movie.insert({
 			title: req.body.title,
 			overview: req.body.overview,
 			poster_path: req.body.poster_path,
-			popularity: req.body.popularity,
+			popularity: Number(req.body.popularity),
 			tags: req.body.tags.split(",")
 		})
 			.then(data => {
@@ -43,7 +42,7 @@ class MovieController {
 	static update(req, res, next) {
 		const id = req.params.id
 		Movie.updateOne(id, {
-			popularity: req.body.popularity,
+			popularity: Number(req.body.popularity),
 
 		})
 			.then(data => {
